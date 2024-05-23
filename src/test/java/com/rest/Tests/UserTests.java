@@ -3,6 +3,7 @@ package com.rest.Tests;
 
 import com.rest.Configurations.AppConfig;
 import com.rest.PostsRequests.AccountRegister;
+import com.rest.PostsRequests.UserLogin;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.testng.annotations.BeforeClass;
@@ -13,8 +14,11 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class UserTests {
+
+
     @BeforeClass
     public void setup() {
+
         AppConfig.SetUp();
 
     }
@@ -38,8 +42,8 @@ public class UserTests {
                         when().
                         post("/users"). // Replace with your actual endpoint
                         then().
-                        statusCode(201). // Replace with the expected status code
-                        body("email", equalTo("test@te.23")). // Validate fields
+                        statusCode(200). // Replace with the expected status code
+                        body("email", equalTo("test@tmm.23")). // Validate fields
                         body("username", equalTo("test2")).
                         body("knownAs", equalTo("TTM")).
                         body("gender", equalTo("Male")).
@@ -49,6 +53,23 @@ public class UserTests {
                         body("password", equalTo("444Serero#")). // Note: Avoid validating passwords in real scenarios
                         extract().response();
 
-        Assertions.assertEquals(response.getStatusCode(), 404);
+
+    }
+
+    @Test
+    public void testUnauthorizedLogin(){
+        UserLogin login = new UserLogin();
+        login.username =("admin");
+        login.password= ("password");
+        Response response =
+                 given()
+                        .header("Content-Type", "application/json")
+                        .body(login)
+                        .when().post("/api/Account/login")
+                        .then()
+
+                        .statusCode(401).extract().response();
+
+
     }
 }
