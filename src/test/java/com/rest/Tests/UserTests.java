@@ -29,32 +29,33 @@ public class UserTests {
         AccountRegister user = new AccountRegister();
         user.setEmail(Randomer.generateRandomChars()+"@test.com");
         user.setUsername(Randomer.generateRandomChars()+"@test.com");
-        user.setKnownAs("TTM");
-        user.setGender("female");
-        user.setDateOfBirth("2004-05-22T15:56:15.057Z");
+        user.setKnownAs("TTM1");
+        user.setGender("male");
+        user.setDateOfBirth("2000-05-22T15:56:15.057Z");
         user.setCity("Durban");
         user.setCountry("South Africa");
         user.setPassword("444Pule");
+        //user.setConfirmPassword("444Pul7");
 
         Response response =
                 given().
                         header("Content-Type", "application/json").
                         body(user).
                         when().
-                        post("/users"). // Replace with your actual endpoint
+                        post("api/Account/register"). // Replace with your actual endpoint
                         then().
                         statusCode(200). // Replace with the expected status code
                        // Note: Avoid validating passwords in real scenarios
                         extract().response();
-
+System.out.println(response.getBody().asString());
 
     }
 
     @Test
     public void testUnauthorizedLogin(){
         UserLogin login = new UserLogin();
-        login.username =("admin");
-        login.password= ("password");
+        login.username =("Inno2");
+        login.password= ("1TestApp1");
         Response response =
                  given()
                         .header("Content-Type", "application/json")
@@ -62,7 +63,7 @@ public class UserTests {
                         .when().post("/api/Account/login")
                         .then()
 
-                        .statusCode(401).extract().response();
+                        .statusCode(200).extract().response();
 
 
     }

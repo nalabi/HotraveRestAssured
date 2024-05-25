@@ -10,6 +10,8 @@ public class AccountRegister {
     private String city;
     private String country;
     private String password;
+    private String confirmPassword;
+
 
     // Getters and setters
     public String getEmail() { return email; }
@@ -35,6 +37,9 @@ public class AccountRegister {
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+
+    public String getConfirmPassword() { return confirmPassword; }
+    public void setConfirmPassword(String confirmPassword) { this.confirmPassword = confirmPassword; }
 }
 
 

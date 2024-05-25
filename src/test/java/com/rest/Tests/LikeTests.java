@@ -20,15 +20,16 @@ public class LikeTests {
     public void testGetLikesByUserId (){
         TokenClass tokenClass = new TokenClass();
         Response response =
-                (Response) given()
-                        .header("Authorization", "Bearer " + tokenClass.accessToken)
+                given()
+                        .header("Authorization", "Bearer " + tokenClass.getAccessToken())
+                        .header("Content-Type", "application/json")
                         .param("predicate", "Liked")
                         .get("/api/Likes")
                         .then()
                         .statusCode(200)
                         .extract().response();
 
-
+System.out.println(response.getBody().asString());
     }
     @AfterClass
     public static void tearDown(){
