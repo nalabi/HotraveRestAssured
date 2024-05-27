@@ -2,6 +2,7 @@
 package com.rest.Tests;
 
 import com.rest.Configurations.AppConfig;
+import com.rest.Methods.Gender;
 import com.rest.Methods.Randomer;
 import com.rest.PostsRequests.AccountRegister;
 import com.rest.PostsRequests.UserLogin;
@@ -29,8 +30,8 @@ public class UserTests {
         AccountRegister user = new AccountRegister();
         user.setEmail(Randomer.generateRandomChars()+"@test.com");
         user.setUsername(Randomer.generateRandomChars()+"@test.com");
-        user.setKnownAs("TTM1");
-        user.setGender("male");
+        user.setKnownAs(Randomer.generateRandomName());
+        user.setGender(Gender.getRandomGender());
         user.setDateOfBirth("2000-05-22T15:56:15.057Z");
         user.setCity("Durban");
         user.setCountry("South Africa");
