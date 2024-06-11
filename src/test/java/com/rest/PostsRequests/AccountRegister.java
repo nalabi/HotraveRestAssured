@@ -1,5 +1,8 @@
 package com.rest.PostsRequests;
 
+import com.rest.Methods.Gender;
+import com.rest.Methods.Randomer;
+
 public class AccountRegister {
 
     private String email;
@@ -40,6 +43,89 @@ public class AccountRegister {
 
     public String getConfirmPassword() { return confirmPassword; }
     public void setConfirmPassword(String confirmPassword) { this.confirmPassword = confirmPassword; }
+
+
+    public String emptyEmail() {
+
+        setEmail("");
+        setUsername(Randomer.generateRandomChars() + "@test.com");
+        setKnownAs(Randomer.generateRandomName());
+        setGender(Gender.getRandomGender());
+        setDateOfBirth("2000-05-22T15:56:15.057Z");
+        setCity("Durban");
+        setCountry("South Africa");
+        setPassword("444PCCle");
+        return "The Email field is required.";
+    }
+
+    public void emptyPassword() {
+        AccountRegister user = new AccountRegister();
+        user.setEmail(Randomer.generateRandomChars()+"@test.com");
+        user.setUsername(Randomer.generateRandomChars()+"@test.com");
+        user.setKnownAs(Randomer.generateRandomName());
+        user.setGender(Gender.getRandomGender());
+        user.setDateOfBirth("2000-05-22T15:56:15.057Z");
+        user.setCity("Durban");
+        user.setCountry("South Africa");
+        user.setPassword("");
+
+    }
+    public void emptyConfirmPassword() {
+        AccountRegister user = new AccountRegister();
+        user.setEmail(Randomer.generateRandomChars()+"@test.com");
+        user.setUsername(Randomer.generateRandomChars()+"@test.com");
+        user.setKnownAs(Randomer.generateRandomName());
+        user.setGender(Gender.getRandomGender());
+        user.setDateOfBirth("2000-05-22T15:56:15.057Z");
+        user.setCity("Durban");
+        user.setCountry("South Africa");
+        user.setPassword("444Pule");
+    }
+    public void emptyGender() {
+        AccountRegister user = new AccountRegister();
+        user.setEmail(Randomer.generateRandomChars()+"@test.com");
+        user.setUsername(Randomer.generateRandomChars()+"@test.com");
+        user.setKnownAs(Randomer.generateRandomName());
+        user.setGender("");
+        user.setDateOfBirth("2000-05-22T15:56:15.057Z");
+        user.setCity("Durban");
+        user.setCountry("South Africa");
+        user.setPassword("444Pule");
+    }
+    public void emptyDateOfBirth() {
+        AccountRegister user = new AccountRegister();
+        user.setEmail(Randomer.generateRandomChars()+"@test.com");
+        user.setUsername(Randomer.generateRandomChars()+"@test.com");
+        user.setKnownAs(Randomer.generateRandomName());
+        user.setGender(Gender.getRandomGender());
+        user.setDateOfBirth("");
+        user.setCity("Durban");
+        user.setCountry("South Africa");
+        user.setPassword("444Pule");
+    }
+    public void emptyCity() {
+        AccountRegister user = new AccountRegister();
+        user.setEmail(Randomer.generateRandomChars()+"@test.com");
+        user.setUsername(Randomer.generateRandomChars()+"@test.com");
+        user.setKnownAs(Randomer.generateRandomName());
+        user.setGender(Gender.getRandomGender());
+        user.setDateOfBirth("2000-05-22T15:56:15.057Z");
+        user.setCity("");
+        user.setCountry("South Africa");
+        user.setPassword("444Pule");
+    }
+    public void emptyCountry() {
+        AccountRegister user = new AccountRegister();
+        user.setEmail(Randomer.generateRandomChars()+"@test.com");
+        user.setUsername(Randomer.generateRandomChars()+"@test.com");
+        user.setKnownAs(Randomer.generateRandomName());
+        user.setGender(Gender.getRandomGender());
+        user.setDateOfBirth("2000-05-22T15:56:15.057Z");
+        user.setCity("Durban");
+        user.setCountry("");
+        user.setPassword("444Pule");
+    }
+
 }
 
 

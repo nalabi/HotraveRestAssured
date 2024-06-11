@@ -1,4 +1,4 @@
-package com.rest.UpdateRequests;
+package com.rest.Configurations;
 
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;

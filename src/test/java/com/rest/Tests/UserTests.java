@@ -7,21 +7,21 @@ import com.rest.Methods.Randomer;
 import com.rest.PostsRequests.AccountRegister;
 import com.rest.PostsRequests.UserLogin;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.Assertions;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 
 public class UserTests {
 
-
+    AccountRegister accountRegister = new AccountRegister();
     @BeforeClass
     public void setup() {
 
         AppConfig.SetUp();
+
 
     }
 
@@ -64,8 +64,23 @@ System.out.println(response.getBody().asString());
                         .when().post("/api/Account/login")
                         .then()
 
-                        .statusCode(200).extract().response();
+                        .statusCode(401).extract().response();
 
+
+    }
+    @Test
+    public void testemptyUsernameReg(){
+         Response response =
+         given().
+                 header("Content-Type", "application/json").
+                 body(accountRegister.emptyEmail()).
+                 when().post("/api/Account/register").then().statusCode(400)
+                 .extract().response();
+        Assert.assertSame("Empty email", response.getBody().asString());
+    }
+
+    @Test
+    public void testMissingPasswordReg(){
 
     }
 }
