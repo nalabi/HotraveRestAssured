@@ -1,11 +1,15 @@
 
 package com.rest.Tests;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.rest.Configurations.AppConfig;
 import com.rest.Methods.Gender;
 import com.rest.Methods.Randomer;
 import com.rest.PostsRequests.AccountRegister;
 import com.rest.PostsRequests.UserLogin;
+import com.rest.TestReports.ExtentManager;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -15,18 +19,20 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 
 public class UserTests {
-
+    private ExtentReports extent;
+    private ExtentTest test;
     AccountRegister accountRegister = new AccountRegister();
     @BeforeClass
     public void setup() {
 
         AppConfig.SetUp();
-
+        extent = ExtentManager.getInstance();
 
     }
 
     @Test
     public void testCreateUser() {
+        test = extent.createTest("CreateUsers", "Test to get all users");
         AccountRegister user = new AccountRegister();
         user.setEmail(Randomer.generateRandomChars()+"@test.com");
         user.setUsername(Randomer.generateRandomChars()+"@test.com");
@@ -82,5 +88,8 @@ System.out.println(response.getBody().asString());
     @Test
     public void testMissingPasswordReg(){
 
+    }
+    public void tearDown(){
+        extent.flush();
     }
 }
