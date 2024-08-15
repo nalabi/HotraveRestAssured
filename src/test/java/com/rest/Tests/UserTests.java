@@ -55,6 +55,7 @@ public class UserTests {
                        // Note: Avoid validating passwords in real scenarios
                         extract().response();
 System.out.println(response.getBody().asString());
+        test.pass("Response code is 200");
 
     }
 

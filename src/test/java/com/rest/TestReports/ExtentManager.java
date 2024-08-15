@@ -9,7 +9,8 @@ public class ExtentManager {
     public static ExtentReports getInstance() {
         if (extent == null) {
             extent = new ExtentReports();
-            ExtentSparkReporter spark = new ExtentSparkReporter("C:\\Users\\Admin/SparkReport.html");
+            ExtentSparkReporter spark = new ExtentSparkReporter("C:\\Users\\Admin\\SparkReport.html");
+
             extent.attachReporter(spark);
         }
         return extent;
